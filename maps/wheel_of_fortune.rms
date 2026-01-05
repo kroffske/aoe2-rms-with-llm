@@ -1,0 +1,865 @@
+/* ==========================================================
+   WHEEL OF FORTUNE v10
+   FFA 8-player map - players spawn VERY close to center
+   Christmas tree in center with relics as ornaments!
+   Gold on "spokes", stone on outer ring only
+   Winter theme with ice to prevent walling
+
+   Pixel-perfect tree (1 tile per land)
+   ========================================================== */
+
+/* ==================== PLAYER_SETUP ==================== */
+<PLAYER_SETUP>
+  direct_placement
+  ai_info_map_type ARENA 0 0 0
+
+/* ==================== LAND_GENERATION ==================== */
+<LAND_GENERATION>
+  base_terrain SNOW
+
+  /* Player lands - fixed positions BETWEEN spokes */
+  /* 8 players at 22.5° offsets from spokes, radius ~20 from center */
+
+  /* P1: between N and NE */
+  create_land {
+    terrain_type GRASS_SNOW
+    land_percent 1
+    base_size 8
+    land_position 58 31
+    assign_to_player 1
+    zone 1
+  }
+
+  /* P2: between NE and E */
+  create_land {
+    terrain_type GRASS_SNOW
+    land_percent 1
+    base_size 8
+    land_position 69 42
+    assign_to_player 2
+    zone 1
+  }
+
+  /* P3: between E and SE */
+  create_land {
+    terrain_type GRASS_SNOW
+    land_percent 1
+    base_size 8
+    land_position 69 58
+    assign_to_player 3
+    zone 1
+  }
+
+  /* P4: between SE and S */
+  create_land {
+    terrain_type GRASS_SNOW
+    land_percent 1
+    base_size 8
+    land_position 58 69
+    assign_to_player 4
+    zone 1
+  }
+
+  /* P5: between S and SW */
+  create_land {
+    terrain_type GRASS_SNOW
+    land_percent 1
+    base_size 8
+    land_position 42 69
+    assign_to_player 5
+    zone 1
+  }
+
+  /* P6: between SW and W */
+  create_land {
+    terrain_type GRASS_SNOW
+    land_percent 1
+    base_size 8
+    land_position 31 58
+    assign_to_player 6
+    zone 1
+  }
+
+  /* P7: between W and NW */
+  create_land {
+    terrain_type GRASS_SNOW
+    land_percent 1
+    base_size 8
+    land_position 31 42
+    assign_to_player 7
+    zone 1
+  }
+
+  /* P8: between NW and N */
+  create_land {
+    terrain_type GRASS_SNOW
+    land_percent 1
+    base_size 8
+    land_position 42 31
+    assign_to_player 8
+    zone 1
+  }
+
+  /* Center circle - ICE for winter theme */
+  create_land {
+    terrain_type ICE
+    number_of_tiles 900
+    land_position 50 50
+    base_size 20
+    clumping_factor 15
+    zone 2
+    land_id 10
+  }
+
+  /* === CHRISTMAS TREE pointing to TOP corner === */
+  /* TOP = (90,10), direction from center: +X, -Y */
+  /* Spacing = 1 unit for solid fill (blocks overlap) */
+
+  /* === TIER 1 (TOP) - DIRT3 (unique, trees as objects) === */
+  /* Row 1: tip */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 57 43 zone 2 land_id 42 }
+  /* Row 2: 2 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 56 43 zone 2 land_id 42 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 57 44 zone 2 land_id 42 }
+  /* Row 3: 3 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 43 zone 2 land_id 42 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 56 44 zone 2 land_id 42 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 57 45 zone 2 land_id 42 }
+
+  /* === TIER 2 (MIDDLE) - SNOW_FOREST === */
+  /* Tip directly under Tier 1 tip: (54,46) -> (53,47) -> (52,48) */
+  /* Row 4: tip */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 56 44 zone 2 land_id 43 }
+  /* Row 5: 2 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 44 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 56 45 zone 2 land_id 43 }
+  /* Row 6: 3 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 54 44 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 45 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 56 46 zone 2 land_id 43 }
+  /* Row 7: 4 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 44 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 54 45 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 46 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 56 47 zone 2 land_id 43 }
+  /* Row 8: 5 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 44 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 45 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 54 46 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 47 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 56 48 zone 2 land_id 43 }
+  /* Row 9: 6 blocks (base) */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 44 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 45 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 46 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 54 47 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 48 zone 2 land_id 43 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 56 49 zone 2 land_id 43 }
+
+  /* === TIER 3 (BASE) - JUNGLE === */
+  /* Tip: (52, 48) - continues center line */
+  /* Row 10: tip */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 45 zone 2 land_id 44 }
+  /* Row 11: 2 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 54 45 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 46 zone 2 land_id 44 }
+  /* Row 12: 3 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 45 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 54 46 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 47 zone 2 land_id 44 }
+  /* Row 13: 4 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 45 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 46 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 54 47 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 48 zone 2 land_id 44 }
+  /* Row 14: 5 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 45 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 46 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 47 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 54 48 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 49 zone 2 land_id 44 }
+  /* Row 15: 6 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 45 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 46 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 47 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 48 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 54 49 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 50 zone 2 land_id 44 }
+  /* Row 16: 7 blocks (base) */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 45 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 46 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 47 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 48 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 49 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 54 50 zone 2 land_id 44 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 55 51 zone 2 land_id 44 }
+
+  /* === TIER 4 - PINE_FOREST === */
+  /* Tip: (50, 50) - moved down 1 from (51, 49) */
+  /* Row 17: tip */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 47 zone 2 land_id 45 }
+  /* Row 18: 2 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 47 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 48 zone 2 land_id 45 }
+  /* Row 19: 3 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 47 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 48 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 49 zone 2 land_id 45 }
+  /* Row 20: 4 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 47 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 48 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 49 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 50 zone 2 land_id 45 }
+  /* Row 21: 5 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 47 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 48 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 49 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 50 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 51 zone 2 land_id 45 }
+  /* Row 22: 6 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 47 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 48 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 49 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 50 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 51 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 52 zone 2 land_id 45 }
+  /* Row 23: 7 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 47 47 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 48 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 49 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 50 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 51 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 52 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 53 zone 2 land_id 45 }
+  /* Row 24: 8 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 46 47 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 47 48 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 49 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 50 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 51 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 52 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 53 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 54 zone 2 land_id 45 }
+  /* Row 25: 9 blocks (base - extra wide) */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 45 47 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 46 48 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 47 49 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 50 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 51 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 52 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 53 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 52 54 zone 2 land_id 45 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 53 55 zone 2 land_id 45 }
+
+  /* === TIER 5 - FOREST === */
+  /* Tip: (51, 49) - shifted up 3 tiles to connect with Tier 4 */
+  /* Row 26: tip */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 49 zone 2 land_id 46 }
+  /* Row 27: 2 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 49 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 50 zone 2 land_id 46 }
+  /* Row 28: 3 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 49 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 50 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 51 zone 2 land_id 46 }
+  /* Row 29: 4 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 49 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 50 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 51 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 52 zone 2 land_id 46 }
+  /* Row 30: 5 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 47 49 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 50 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 51 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 52 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 53 zone 2 land_id 46 }
+  /* Row 31: 6 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 46 49 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 47 50 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 51 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 52 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 53 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 54 zone 2 land_id 46 }
+  /* Row 32: 7 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 45 49 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 46 50 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 47 51 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 52 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 53 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 54 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 55 zone 2 land_id 46 }
+  /* Row 33: 8 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 44 49 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 45 50 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 46 51 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 47 52 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 53 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 54 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 55 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 56 zone 2 land_id 46 }
+  /* Row 34: 9 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 43 49 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 44 50 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 45 51 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 46 52 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 47 53 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 54 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 55 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 56 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 57 zone 2 land_id 46 }
+  /* Row 35: 10 blocks */
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 42 49 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 43 50 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 44 51 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 45 52 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 46 53 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 47 54 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 48 55 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 49 56 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 50 57 zone 2 land_id 46 }
+  create_land { terrain_type GRASS_SNOW number_of_tiles 9 base_size 1 land_position 51 58 zone 2 land_id 46 }
+
+  /* === TRUNK - DESERT (visible on minimap, allows trees) === */
+  /* Below Tier 5 center (46,53)-(47,54), diagonal down (-X, +Y) */
+  /* Row 36: 2 blocks */
+  create_land { terrain_type DESERT number_of_tiles 6 base_size 1 land_position 45 54 zone 2 land_id 47 }
+  create_land { terrain_type DESERT number_of_tiles 6 base_size 1 land_position 46 55 zone 2 land_id 47 }
+  /* Row 37: 2 blocks */
+  create_land { terrain_type DESERT number_of_tiles 6 base_size 1 land_position 44 55 zone 2 land_id 47 }
+  create_land { terrain_type DESERT number_of_tiles 6 base_size 1 land_position 45 56 zone 2 land_id 47 }
+  /* Row 38: 2 blocks */
+  create_land { terrain_type DESERT number_of_tiles 6 base_size 1 land_position 43 56 zone 2 land_id 47 }
+  create_land { terrain_type DESERT number_of_tiles 6 base_size 1 land_position 44 57 zone 2 land_id 47 }
+  /* Row 39: 2 blocks (bottom) */
+  create_land { terrain_type DESERT number_of_tiles 6 base_size 1 land_position 42 57 zone 2 land_id 47 }
+  create_land { terrain_type DESERT number_of_tiles 6 base_size 1 land_position 43 58 zone 2 land_id 47 }
+
+  /* === SPOKES - VERY NARROW (2 tiles each) === */
+
+  /* === SPOKE NORTH (cardinal - long, starts at 32%) === */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 32 zone 3 land_id 20 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 29 zone 3 land_id 20 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 26 zone 3 land_id 20 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 23 zone 3 land_id 20 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 20 zone 3 land_id 20 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 17 zone 3 land_id 20 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 14 zone 3 land_id 20 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 11 zone 3 land_id 20 }
+
+  /* === SPOKE NORTHEAST (diagonal - starts further) === */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 62 38 zone 3 land_id 21 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 65 35 zone 3 land_id 21 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 68 32 zone 3 land_id 21 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 71 29 zone 3 land_id 21 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 74 26 zone 3 land_id 21 }
+
+  /* === SPOKE EAST (cardinal - long, starts at 68%) === */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 68 50 zone 3 land_id 22 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 71 50 zone 3 land_id 22 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 74 50 zone 3 land_id 22 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 77 50 zone 3 land_id 22 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 80 50 zone 3 land_id 22 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 83 50 zone 3 land_id 22 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 86 50 zone 3 land_id 22 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 89 50 zone 3 land_id 22 }
+
+  /* === SPOKE SOUTHEAST (diagonal - starts further) === */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 62 62 zone 3 land_id 23 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 65 65 zone 3 land_id 23 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 68 68 zone 3 land_id 23 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 71 71 zone 3 land_id 23 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 74 74 zone 3 land_id 23 }
+
+  /* === SPOKE SOUTH (cardinal - long, starts at 68%) === */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 68 zone 3 land_id 24 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 71 zone 3 land_id 24 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 74 zone 3 land_id 24 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 77 zone 3 land_id 24 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 80 zone 3 land_id 24 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 83 zone 3 land_id 24 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 86 zone 3 land_id 24 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 89 zone 3 land_id 24 }
+
+  /* === SPOKE SOUTHWEST (diagonal - starts further) === */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 38 62 zone 3 land_id 25 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 35 65 zone 3 land_id 25 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 32 68 zone 3 land_id 25 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 29 71 zone 3 land_id 25 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 26 74 zone 3 land_id 25 }
+
+  /* === SPOKE WEST (cardinal - long, starts at 32%) === */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 32 50 zone 3 land_id 26 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 29 50 zone 3 land_id 26 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 26 50 zone 3 land_id 26 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 23 50 zone 3 land_id 26 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 20 50 zone 3 land_id 26 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 17 50 zone 3 land_id 26 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 14 50 zone 3 land_id 26 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 11 50 zone 3 land_id 26 }
+
+  /* === SPOKE NORTHWEST (diagonal - starts further) === */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 38 38 zone 3 land_id 27 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 35 35 zone 3 land_id 27 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 32 32 zone 3 land_id 27 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 29 29 zone 3 land_id 27 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 26 26 zone 3 land_id 27 }
+
+  /* === OUTER RING (single layer at map edge) === */
+
+  /* OUTER RING - North section */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 8 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 45 9 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 40 10 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 55 9 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 60 10 zone 4 land_id 30 }
+
+  /* OUTER RING - Northeast section */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 65 12 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 70 15 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 75 20 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 78 25 zone 4 land_id 30 }
+
+  /* OUTER RING - East section */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 92 50 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 91 45 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 90 40 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 91 55 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 90 60 zone 4 land_id 30 }
+
+  /* OUTER RING - Southeast section */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 88 65 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 85 70 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 80 75 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 75 78 zone 4 land_id 30 }
+
+  /* OUTER RING - South section */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 50 92 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 45 91 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 40 90 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 55 91 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 60 90 zone 4 land_id 30 }
+
+  /* OUTER RING - Southwest section */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 35 88 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 30 85 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 25 80 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 22 75 zone 4 land_id 30 }
+
+  /* OUTER RING - West section */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 8 50 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 9 45 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 10 40 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 9 55 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 10 60 zone 4 land_id 30 }
+
+  /* OUTER RING - Northwest section */
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 12 65 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 15 70 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 20 75 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 12 35 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 15 30 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 20 25 zone 4 land_id 30 }
+  create_land { terrain_type DIRT_SNOW number_of_tiles 1 base_size 1 land_position 25 20 zone 4 land_id 30 }
+
+/* ==================== ELEVATION_GENERATION ==================== */
+<ELEVATION_GENERATION>
+  enable_balanced_elevation
+
+  create_elevation 2 {
+    base_terrain SNOW
+    number_of_clumps 12
+    number_of_tiles 300
+    set_scale_by_groups
+    set_scale_by_size
+  }
+
+/* ==================== TERRAIN_GENERATION ==================== */
+<TERRAIN_GENERATION>
+
+  color_correction CC_WINTER
+
+  /* ICE patches on snow - prevents walling */
+  create_terrain ICE {
+    base_terrain SNOW
+    land_percent 6
+    number_of_clumps 20
+    set_scale_by_groups
+    spacing_to_other_terrain_types 3
+    set_avoid_player_start_areas
+    clumping_factor 10
+  }
+
+  /* Fill area OUTSIDE wheel with ICE (no forest can grow there) */
+  create_terrain ICE {
+    base_terrain SNOW
+    land_percent 40
+    number_of_clumps 8
+    spacing_to_other_terrain_types 12
+  }
+
+  /* Frozen lakes - small pools with deep fish (outer ICE only) */
+  create_terrain WATER {
+    base_terrain ICE
+    land_percent 4
+    number_of_clumps 24
+    clumping_factor 3
+    spacing_to_other_terrain_types 8
+    set_avoid_player_start_areas
+    set_scale_by_groups
+  }
+
+  /* Forest grows on remaining SNOW inside wheel */
+  create_terrain SNOW_FOREST {
+    base_terrain SNOW
+    land_percent 3
+    number_of_clumps 16
+    set_scale_by_groups
+    set_avoid_player_start_areas
+    clumping_factor 5
+  }
+
+  /* Small forests near players */
+  create_terrain SNOW_FOREST {
+    base_terrain GRASS_SNOW
+    land_percent 2
+    number_of_clumps 6
+    set_scale_by_groups
+    set_avoid_player_start_areas
+    spacing_to_other_terrain_types 3
+  }
+
+/* ==================== CONNECTION_GENERATION ==================== */
+<CONNECTION_GENERATION>
+
+  create_connect_all_players_land {
+    /* NOTE: no replace_terrain for forests - they are the tree! */
+    /* Tree uses GRASS_SNOW - high cost to avoid paths through tree */
+    terrain_cost GRASS_SNOW 50
+    terrain_cost SNOW 1
+    terrain_cost GRASS 1
+    terrain_cost ICE 20
+  }
+
+/* ==================== OBJECTS_GENERATION ==================== */
+<OBJECTS_GENERATION>
+
+/* ===== TOWN CENTER ===== */
+create_object TOWN_CENTER {
+  set_place_for_every_player
+  min_distance_to_players 0
+  max_distance_to_players 0
+}
+
+/* ===== RELICS AS TREE ORNAMENTS (placed FIRST!) ===== */
+/* All tiers use GRASS_SNOW - relics distributed randomly across tree */
+create_object RELIC {
+  set_gaia_object_only
+  number_of_objects 15
+  terrain_to_place_on GRASS_SNOW
+  min_distance_to_players 22
+  temp_min_distance_group_placement 5
+}
+
+/* ===== SNOW PINE TREES (after relics) ===== */
+/* All tiers use SNOW_PINE_TREE for Christmas theme */
+create_object SNOW_PINE_TREE {
+  set_gaia_object_only
+  number_of_objects 1
+  number_of_groups 1000
+  terrain_to_place_on GRASS_SNOW
+  min_distance_to_players 22
+}
+
+/* ===== STARTING UNITS ===== */
+create_object VILLAGER {
+  set_place_for_every_player
+  min_distance_to_players 4
+  max_distance_to_players 6
+  number_of_objects 3
+}
+
+create_object SCOUT {
+  set_place_for_every_player
+  min_distance_to_players 7
+  max_distance_to_players 9
+  number_of_objects 1
+}
+
+/* ===== CLOSE RESOURCES (MINIMAL) ===== */
+
+create_object GOLD {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 2
+  number_of_groups 1
+  set_tight_grouping
+  min_distance_to_players 10
+  max_distance_to_players 14
+  find_closest
+  temp_min_distance_group_placement 3
+}
+
+create_object STONE {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 2
+  number_of_groups 1
+  set_tight_grouping
+  min_distance_to_players 10
+  max_distance_to_players 14
+  find_closest
+  temp_min_distance_group_placement 3
+}
+
+/* ===== FOOD SOURCES ===== */
+
+create_object FORAGE {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 6
+  number_of_groups 1
+  set_tight_grouping
+  min_distance_to_players 8
+  max_distance_to_players 12
+}
+
+create_object SHEEP {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 4
+  min_distance_to_players 0
+  max_distance_to_players 6
+}
+
+create_object SHEEP {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 2
+  number_of_groups 2
+  min_distance_to_players 12
+  max_distance_to_players 20
+  temp_min_distance_group_placement 5
+}
+
+create_object BOAR {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 1
+  number_of_groups 2
+  min_distance_to_players 14
+  max_distance_to_players 20
+  find_closest
+  temp_min_distance_group_placement 8
+}
+
+create_object DEER {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 4
+  number_of_groups 1
+  set_loose_grouping
+  min_distance_to_players 16
+  max_distance_to_players 24
+}
+
+/* ===== STRAGGLER TREES ===== */
+create_object PINETREE {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 5
+  min_distance_to_players 4
+  max_distance_to_players 8
+  set_loose_grouping
+  temp_min_distance_group_placement 2
+}
+
+/* ===== BAOBAB TREES ON TRUNK ===== */
+create_object DLC_BAOBABTREE {
+  set_gaia_object_only
+  number_of_objects 30
+  terrain_to_place_on DESERT
+  temp_min_distance_group_placement 1
+}
+
+/* ===== GOLD ON SPOKES - 1 per DIRT_SNOW tile ===== */
+
+create_object GOLD {
+  set_gaia_object_only
+  number_of_objects 1
+  number_of_groups 500
+  terrain_to_place_on DIRT_SNOW
+  temp_min_distance_group_placement 3
+}
+
+/* ===== STONE ON OUTER RING ===== */
+/* min_distance 38 keeps stone away from spokes (which end ~35 from players) */
+
+create_object STONE {
+  set_gaia_object_only
+  number_of_objects 1
+  number_of_groups 100
+  terrain_to_place_on DIRT_SNOW
+  min_distance_to_players 38
+  temp_min_distance_group_placement 2
+}
+
+/* ===== WOLVES ===== */
+create_object WOLF {
+  set_gaia_object_only
+  number_of_objects 2
+  number_of_groups 3
+  set_scaling_to_map_size
+  min_distance_to_players 30
+  temp_min_distance_group_placement 15
+}
+
+/* ===== SNOW LEOPARDS ON OUTER ICE ===== */
+create_object DLC_SNOWLEOPARD {
+  set_gaia_object_only
+  number_of_objects 1
+  number_of_groups 6
+  terrain_to_place_on ICE
+  min_distance_to_players 40
+  temp_min_distance_group_placement 15
+}
+
+/* ===== ARCTIC WILDLIFE ===== */
+#const DLC_PENGUIN 639
+#const POLAR_BEAR 1970
+#const ARCTIC_HARE 1966
+#const ARCTIC_FOX 1968
+
+/* Penguins on ice */
+create_object DLC_PENGUIN {
+  set_gaia_object_only
+  number_of_objects 5
+  number_of_groups 15
+  terrain_to_place_on ICE
+  min_distance_to_players 15
+  temp_min_distance_group_placement 8
+  set_loose_grouping
+}
+
+/* Polar bears - try with smaller distance */
+create_object POLAR_BEAR {
+  set_gaia_object_only
+  number_of_objects 1
+  number_of_groups 4
+  terrain_to_place_on ICE
+  min_distance_to_players 20
+  temp_min_distance_group_placement 15
+}
+
+/* Arctic hares - food! */
+create_object ARCTIC_HARE {
+  set_gaia_object_only
+  number_of_objects 2
+  number_of_groups 6
+  terrain_to_place_on SNOW
+  min_distance_to_players 15
+  temp_min_distance_group_placement 8
+}
+
+/* Arctic foxes - gold! */
+create_object ARCTIC_FOX {
+  set_gaia_object_only
+  number_of_objects 1
+  number_of_groups 4
+  terrain_to_place_on ICE
+  min_distance_to_players 18
+  temp_min_distance_group_placement 12
+}
+
+/* ===== BEARS ON SNOW AND ICE ===== */
+create_object BEAR {
+  set_gaia_object_only
+  number_of_objects 1
+  number_of_groups 6
+  terrain_to_place_on SNOW
+  min_distance_to_players 20
+  temp_min_distance_group_placement 12
+}
+
+create_object BEAR {
+  set_gaia_object_only
+  number_of_objects 1
+  number_of_groups 4
+  terrain_to_place_on ICE
+  min_distance_to_players 25
+  temp_min_distance_group_placement 12
+}
+
+/* ===== AGGRESSIVE BOARS IN CORNERS ===== */
+create_object BOAR {
+  set_gaia_object_only
+  number_of_objects 2
+  number_of_groups 4
+  terrain_to_place_on ICE
+  min_distance_to_players 50
+  temp_min_distance_group_placement 20
+}
+
+/* ===== EXTRA DEER ON SNOW ===== */
+create_object DEER {
+  set_gaia_object_only
+  number_of_objects 3
+  number_of_groups 8
+  terrain_to_place_on SNOW
+  min_distance_to_players 18
+  temp_min_distance_group_placement 8
+  set_loose_grouping
+}
+
+/* ===== GEESE FLOCKS ===== */
+create_object DLC_GOOSE {
+  set_gaia_object_only
+  number_of_objects 4
+  number_of_groups 6
+  terrain_to_place_on SNOW
+  min_distance_to_players 15
+  temp_min_distance_group_placement 10
+  set_loose_grouping
+}
+
+/* ===== EXTRA WOLVES ===== */
+create_object WOLF {
+  set_gaia_object_only
+  number_of_objects 1
+  number_of_groups 5
+  terrain_to_place_on ICE
+  min_distance_to_players 25
+  temp_min_distance_group_placement 15
+}
+
+/* ===== FISH IN FROZEN LAKES ===== */
+create_object SHORE_FISH {
+  set_gaia_object_only
+  number_of_objects 3
+  number_of_groups 200
+  terrain_to_place_on WATER
+  temp_min_distance_group_placement 0
+}
+
+create_object MARLIN {
+  set_gaia_object_only
+  number_of_objects 2
+  number_of_groups 100
+  terrain_to_place_on WATER
+  temp_min_distance_group_placement 0
+}
+
+create_object TUNA {
+  set_gaia_object_only
+  number_of_objects 2
+  number_of_groups 100
+  terrain_to_place_on WATER
+  temp_min_distance_group_placement 0
+}
+
+
+/* ===== DECORATION ===== */
+create_object HAWK {
+  set_gaia_object_only
+  number_of_objects 4
+  set_scaling_to_map_size
+}

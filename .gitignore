@@ -1,0 +1,52 @@
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build artifacts
+target/
+*.exe
+*.dll
+rms-preview/build/
+rms-preview/dist/
+
+# Generated output
+output/
+
+# Local/temp files
+.local/
+tmp.txt
+*.tmp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node modules (if any)
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Images (generated previews)
+*.png
+
+# Claude Code config (personal settings)
+.claude/
+
+# Task tracking (internal)
+tasks/
+
+# Internal research (contains personal notes)
+docs/research/
+
+# Visualization tools (optional, see TOOLS.md)
+genie-rms-de/
+rms-check/
+rms-preview/
+scripts/

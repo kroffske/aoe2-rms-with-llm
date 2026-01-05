@@ -1,0 +1,55 @@
+/* Simple Islands - water map for genie-rms testing */
+
+<PLAYER_SETUP>
+random_placement
+
+<LAND_GENERATION>
+base_terrain WATER
+
+create_player_lands {
+  terrain_type GRASS
+  land_percent 30
+  base_size 9
+  border_fuzziness 15
+  zone 1
+  other_zone_avoidance_distance 10
+}
+
+<TERRAIN_GENERATION>
+create_terrain FOREST {
+  base_terrain GRASS
+  land_percent 20
+  number_of_clumps 8
+  set_scale_by_groups
+  set_avoid_player_start_areas
+}
+
+create_terrain BEACH {
+  base_terrain GRASS
+  land_percent 5
+  number_of_clumps 20
+  terrain_mask 1
+}
+
+<OBJECTS_GENERATION>
+create_object TOWN_CENTER {
+  set_place_for_every_player
+  min_distance_to_players 0
+  max_distance_to_players 0
+}
+
+create_object GOLD {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 7
+  min_distance_to_players 10
+  max_distance_to_players 14
+}
+
+create_object STONE {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 5
+  min_distance_to_players 12
+  max_distance_to_players 16
+}

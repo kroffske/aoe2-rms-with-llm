@@ -1,0 +1,70 @@
+/* Simple Arabia - no cliffs for genie-rms compatibility */
+
+<PLAYER_SETUP>
+random_placement
+
+<LAND_GENERATION>
+base_terrain GRASS
+
+create_player_lands {
+  terrain_type GRASS
+  land_percent 100
+  base_size 9
+  border_fuzziness 15
+}
+
+<TERRAIN_GENERATION>
+create_terrain FOREST {
+  base_terrain GRASS
+  land_percent 9
+  number_of_clumps 10
+  set_scale_by_groups
+  set_avoid_player_start_areas
+  spacing_to_other_terrain_types 3
+}
+
+create_terrain DIRT {
+  base_terrain GRASS
+  land_percent 8
+  number_of_clumps 16
+  set_scale_by_size
+}
+
+<OBJECTS_GENERATION>
+create_object TOWN_CENTER {
+  set_place_for_every_player
+  min_distance_to_players 0
+  max_distance_to_players 0
+}
+
+create_object GOLD {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 7
+  min_distance_to_players 10
+  max_distance_to_players 14
+}
+
+create_object STONE {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 5
+  min_distance_to_players 12
+  max_distance_to_players 16
+}
+
+create_object FORAGE {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 6
+  min_distance_to_players 10
+  max_distance_to_players 14
+}
+
+create_object BOAR {
+  set_place_for_every_player
+  set_gaia_object_only
+  number_of_objects 2
+  min_distance_to_players 16
+  max_distance_to_players 22
+}

@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "sequential-thinking": {
+      "command": "mcp-server-sequential-thinking"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "python-lint",
+  "description": "Universal Python linter - checks code on every edit for hasattr, bare except, and other anti-patterns",
+  "event": "PostToolUse",
+  "matcher": {
+    "tool_name": "Edit|Write"
+  },
+  "command": ["bash", "${CLAUDE_PLUGIN_ROOT}/hooks/lint.sh"]
+}
